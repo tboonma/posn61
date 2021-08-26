@@ -1,0 +1,69 @@
+#include <stdio.h>
+
+main()
+{
+    int x,y,i,j,k,temp=1,d=0;
+    scanf("%d %d",&x,&y);
+    int a[x][y];
+    for(i=0;i<x;i++)
+        for(j=0;j<y;j++)
+            scanf("%d",&a[i][j]);
+    for(k=0;k<y;k++)
+    {
+        for(i=0;i<x-1;i++)
+        {
+            temp=1;
+            for(j=i+1;j<x;j++)
+            {
+                if(a[i][k]==a[j][k])
+                    temp++;
+                else
+                    break;
+            }
+            if(temp==4)
+            {
+                d=1;
+                break;
+            }
+        }
+    }
+    for(k=0;k<x;k++)
+    {
+        for(i=0;i<y-1;i++)
+        {
+            temp=1;
+            for(j=i+1;j<y;j++)
+            {
+                if(a[k][i]==a[k][j])
+                    temp++;
+                else
+                    break;
+            }
+            if(temp==4)
+            {
+                d=1;
+                break;
+            }
+        }
+    }
+    for(i=0;i<x;i++)
+    {
+        for(j=0;j<y;j++)
+        {
+            if(a[i][j]==a[i+1][j+1]&&a[i][j]==a[i+2][j+2]&&a[i][j]==a[i+3][j+3])
+                d=1;
+        }
+    }
+    for(i=0;i<x;i++)
+    {
+        for(j=0;j<y;j++)
+        {
+            if(a[i][j]==a[i+1][j-1]&&a[i][j]==a[i+2][j-2]&&a[i][j]==a[i+3][j-3])
+                d=1;
+        }
+    }
+    if(d==1)
+        printf("TRUE");
+    else
+        printf("FALSE");
+}

@@ -1,0 +1,84 @@
+#include <stdio.h>
+#include <string.h>
+main()
+{
+    int x,y,i,j,num,w,v,k,u,check;
+    char a[129],ac[129],b[129][50];
+    for(i=0;i<129;i++)
+    {
+        a[i]=NULL;
+        ac[i]=NULL;
+        for(j=0;j<50;j++)
+            b[i][j]=NULL;
+    }
+    scanf("%d %d ",&x,&y);
+    gets(a);
+    num=strlen(a);
+    j=0;
+    for(i=0;i<num;i++)
+    {
+        if(a[i]>=65&&a[i]<=90)
+        {
+            ac[j]=a[i];
+            j++;
+        }
+        else if(a[i]>=97&&a[i]<=122)
+        {
+            ac[j]=a[i]-32;
+            j++;
+        }
+    }
+    num=strlen(ac);
+    w=num%x;
+    v=num/x;
+    if(y==1)
+    {
+        if(w!=0)
+            v++;
+        k=0;
+        for(i=0;i<x;i++)
+        {
+            for(j=0;j<v;j++)
+            {
+                b[j][i]=ac[k];
+                k++;
+            }
+        }
+        for(i=0;i<v;i++)
+        {
+            for(j=0;j<x;j++)
+            {
+                if(b[i][j]!=NULL)
+                    printf("%c",b[i][j]);
+            }
+        }
+    }
+    else if(y==2)
+    {
+        k=0;
+        if(w!=0)
+        {
+            v++;
+            w=v*x;
+            u=w-num;
+        }
+        for(i=0;i<v;i++)
+        {
+            if(i==u)
+                x--;
+            for(j=0;j<x;j++)
+            {
+                b[i][j]=ac[k];
+                k++;
+            }
+        }
+        for(i=0;i<=x;i++)
+        {
+            for(j=0;j<=v;j++)
+            {
+                if(b[j][i]!=NULL)
+                    printf("%c",b[j][i]);
+            }
+        }
+    }
+}

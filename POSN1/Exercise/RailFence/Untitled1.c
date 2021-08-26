@@ -1,0 +1,93 @@
+#include <stdio.h>
+#include <string.h>
+main()
+{
+    int x,y,d,i,j,numa,numb,k=0,w,v;
+    char a[256],b[256],c[256][20];
+    while(1)
+    {
+        k=0,x=0,y=0;
+        for(i=0;i<256;i++)
+        {
+            a[i]=NULL;
+            b[i]=NULL;
+            for(j=0;j<20;j++)
+                c[i][j]=NULL;
+        }
+        scanf("%d %d ",&x,&y);
+        if(x==0&&y==0)
+            break;
+        gets(a);
+        numa=strlen(a);
+        for(i=0;i<numa;i++)
+        {
+            if(a[i]>=65&&a[i]<=90)
+            {
+                b[k]=a[i];
+                k++;
+            }
+            else if(a[i]>=97&&a[i]<=122)
+            {
+
+                b[k]=a[i]-32;
+                k++;
+            }
+        }
+        numb=strlen(b);
+        if(x==1)
+        {
+            for(j=0;j<y;j++)
+            {
+                for(i=j;i<numb;i+=y)
+                    if(b[i]!=NULL)
+                    printf("%c",b[i]);
+            }
+        }
+        if(x==2)
+        {
+            w=numb%y;
+            v=numb/y;
+            if(w==0)
+            {
+                i=0;
+                for(j=0;j<y;j++)
+                {
+                    for(k=0;k<v;k++)
+                    {
+                        c[j][k]=b[i];
+                        i++;
+                    }
+                }
+                for(i=0;i<v;i++)
+                {
+                    for(j=0;j<y;j++)
+                        if(c[j][i]!=NULL)
+                          printf("%c",c[j][i]);
+                }
+            }
+            else if(w!=0)
+            {
+                v++;
+                i=0;
+                for(j=0;j<y;j++)
+                {
+                    if(j==w)
+                        v-=1;
+                    for(k=0;k<v;k++)
+                    {
+                        c[k][j]=b[i];
+                        i++;
+                    }
+                }
+                v++;
+                for(i=0;i<v;i++)
+                {
+                    for(j=0;j<y;j++)
+                        if(c[i][j]!=NULL)
+                          printf("%c",c[i][j]);
+                }
+            }
+        }
+        printf("\n");
+    }
+}
