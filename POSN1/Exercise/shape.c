@@ -1,31 +1,24 @@
 #include <stdio.h>
-int x,y,z,i,j,k,b;
-main()
-{
-    char a[10];
-    scanf("%s",&a);
-    if(a[0]=='t')
-        tri();
-    else if(a[0]=='r')
-        rect();
 
-}
+int x, y, z, i, j, k, b;
+
 void rect()
 {
-    scanf("%d %d %d",&x,&y,&z);
+    scanf("%d %d %d", &x, &y, &z);
 
-    for(i=1;i<=x;i++)
+    for(i = 1; i <= x; i++)
     {
-        for(j=1;j<=z;j++)
+        for(j = 1; j <= z; j++)
         {
-            for(k=1;k<=y;k++)
+            for(k = 1; k <= y; k++)
                 printf("*");
-                printf("\n");
+            printf("\n");
         }
-        if(i!=x)
+        if(i != x)
             printf("\n");
     }
 }
+
 void tri()
 {
     scanf("%d %d",&x,&y);
@@ -43,4 +36,15 @@ void tri()
         if(i!=x-1)
             printf("\n");
     }
+}
+
+int main()
+{
+    char a[10];
+    scanf("%s ", &a);
+    if(a[0] == 't')
+        tri();
+    else if(a[0] == 'r')
+        rect();
+    return 0;
 }
